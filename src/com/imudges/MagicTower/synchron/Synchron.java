@@ -1,8 +1,7 @@
-package com.imudges.synchron;
+package com.imudges.MagicTower.synchron;
 
-import com.imudges.map.Map;
-import com.imudges.map.MapTop;
-import com.imudges.monster.Hero;
+import com.imudges.MagicTower.things.map.MapAll;
+import com.imudges.MagicTower.things.monster.Hero;
 
 /**
  * 数据同步类
@@ -13,7 +12,7 @@ public class Synchron {
     private int height = 15;
 
     public Hero initHero(){
-        Hero hero = new Hero();
+        Hero hero = new Hero(true);
         hero.setPng("hero_1.png");
         return hero;
     }
@@ -26,7 +25,7 @@ public class Synchron {
         return height;
     }
 
-    public Map initMap(){
+    public MapAll initMap(){
         int id = 0;
         int pngWidth = 8;
         String name = "map2.png";
@@ -62,16 +61,7 @@ public class Synchron {
                 "999,999,999,999,999,999,702,999,999,999,999,999,999,710,999,999,999,999,999,999-" +
                 "999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999-" +
                 "1000,1000,1000,1000,1000,1000,1000,999,999,999,999,999,999,1000,1000,1000,1000,1000,1000,1000" ;
-
-        //System.out.println(backgroundString);
-        return new Map(id, width, height, pngWidth, name, backgroundString,thingsString);
-    }
-
-    public MapTop initMapTop(){
-        int id = 0;
-        int pngWidth = 8;
-        String name = "map2.png";
-        String top =
+        String fontgroundString =
                 "999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999-" +
                 "999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999-" +
                 "999,999,999,999,999,999,694,999,999,999,999,999,999,694,999,999,999,999,999,999-" +
@@ -87,6 +77,9 @@ public class Synchron {
                 "999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999-" +
                 "999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999-" +
                 "1000,1000,1000,1000,1000,1000,1000,999,999,999,999,999,999,1000,1000,1000,1000,1000,1000,1000" ;
-        return new MapTop(id, width, height, pngWidth, name, top);
+
+
+
+        return new MapAll(id,width,height,pngWidth,name,backgroundString,thingsString,fontgroundString);
     }
 }

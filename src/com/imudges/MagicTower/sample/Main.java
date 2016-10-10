@@ -1,4 +1,4 @@
-package com.imudges.sample;
+package com.imudges.MagicTower.sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -9,13 +9,13 @@ import javafx.stage.Stage;
  * 程序入口
  */
 public class Main extends Application {
-    private GamePanel mPanel;
+    private GameLoader gameLoader;
 
     @Override
     public void start(Stage stage) throws Exception {
-        mPanel = new GamePanel();
-        final Scene scene = new Scene(mPanel,800, 600);
-        mPanel.load();
+        gameLoader = new GameLoader();
+        final Scene scene = new Scene(gameLoader,20*32, 15*32);
+        gameLoader.start();
         scene.setFill(Color.BLACK);
         stage.setScene(scene);
         stage.setTitle("零式之战");
@@ -24,7 +24,7 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        mPanel.stop();
+        gameLoader.stop();
         super.stop();
     }
 
