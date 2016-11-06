@@ -16,10 +16,6 @@ public class MapSingle extends ModelRectangle{
         setyLength(yLength);
 
         this.imgWidth = 8;
-//        this.imageView = new ImageView(new Image(getClass().getResourceAsStream("map1.png")));
-//        imageView.setViewport(new Rectangle2D(getPngX(1),getPngY(1), 32, 32));
-//        imageView.setLayoutX(32*x);
-//        imageView.setLayoutY(32*y);
     }
 
     public MapSingle(int x, int y, int xLength, int yLength, String imgUrl, int imgWidth, int index){
@@ -28,10 +24,10 @@ public class MapSingle extends ModelRectangle{
         setxLength(xLength);
         setyLength(yLength);
         this.imgWidth = imgWidth;
-//        this.imageView = new ImageView(new Image(getClass().getResourceAsStream(imgUrl)));
-//        imageView.setViewport(new Rectangle2D(getPngX(index),getPngY(index), 32, 32));
-//        imageView.setLayoutX(32*x);
-//        imageView.setLayoutY(32*y);
+    }
+
+    public void remove(){
+
     }
 
     public int getPngX(int id){

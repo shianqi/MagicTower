@@ -10,25 +10,70 @@ import javafx.scene.image.ImageView;
  */
 public class DevilCut extends BaseSkill{
     private ImageView imageView;
+    private String direction;
 
-    public DevilCut(int x,int y,Image image){
-        setxLength(70);
-        setyLength(32);
-        setX(32);
-        setY(32);
+    public DevilCut(int x,int y,Image image,String direction){
+        this.direction = direction;
         imageView = new ImageView(image);
-        imageView.setViewport(new Rectangle2D(0,0, 75, 32));
-        imageView.setLayoutX(x);
-        imageView.setLayoutY(y);
+        imageView.setViewport(new Rectangle2D(0,0, 70, 32));
+        if(direction.equals("Right")){
+            setX(x);
+            setY(y);
+            setxLength(70);
+            setyLength(32);
+            imageView.setLayoutX(x);
+            imageView.setLayoutY(y);
+        }else if(direction.equals("Left")){
+            setX(x-38);
+            setY(y);
+            setxLength(70);
+            setyLength(32);
+            imageView.setRotate(180);
+            imageView.setLayoutX(getX());
+            imageView.setLayoutY(getY());
+        }else if(direction.equals("Up")){
+            setX(x);
+            setY(y);
+            setxLength(32);
+            setyLength(70);
+            imageView.setRotate(270);
+            imageView.setLayoutX(x-19);
+            imageView.setLayoutY(y-19);
+        }else{
+            setX(x);
+            setY(y);
+            setxLength(32);
+            setyLength(70);
+            imageView.setRotate(90);
+            imageView.setLayoutX(x-19);
+            imageView.setLayoutY(y+19);
+        }
+
+
         getChildren().add(imageView);
     }
 
     @Override
     public void run() {
-        setX((int)imageView.getLayoutX()+1);
-        setY((int)imageView.getLayoutY()+1);
-        imageView.setLayoutX(imageView.getLayoutX()+5);
-        imageView.setViewport(new Rectangle2D(0,32*(imageView.getLayoutX()%4), 75, 32));
+        if(direction.equals("Right")){
+            setX(getX()+5);
+            imageView.setLayoutX(getX());
+            imageView.setViewport(new Rectangle2D(0,32*(getX()%4), 70, 32));
+        }else if(direction.equals("Left")){
+            setX(getX()-5);
+            imageView.setLayoutX(getX());
+            imageView.setViewport(new Rectangle2D(0,32*(getX()%4), 70, 32));
+        }else if(direction.equals("Up")){
+            setY(getY()-5);
+            imageView.setLayoutX(getX()-19);
+            imageView.setLayoutY(getY()-19);
+            imageView.setViewport(new Rectangle2D(0,32*(getY()%4), 70, 32));
+        }else{
+            setY(getY()+5);
+            imageView.setLayoutX(getX()-19);
+            imageView.setLayoutY(getY()+19);
+            imageView.setViewport(new Rectangle2D(0,32*(getY()%4), 70, 32));
+        }
     }
 
     @Override

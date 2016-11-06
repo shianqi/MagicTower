@@ -1,12 +1,14 @@
 package com.imudges.MagicTower.things.map;
 
 import com.imudges.MagicTower.things.ModelRectangle;
+import com.imudges.MagicTower.things.monster.Monster;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 /**
  * 地图实体层
@@ -21,6 +23,7 @@ public class MapThings extends Parent{
     }
     public ArrayList<ModelRectangle> thingsList;
     public int things[][];
+    Image image = new Image(getClass().getResourceAsStream("map2.png"));
     private ImageView mImageView;
 
     public int getPngX(int id){
@@ -36,7 +39,6 @@ public class MapThings extends Parent{
     }
 
     public void dorw(){
-        Image image = new Image(getClass().getResourceAsStream("map2.png"));
         for(int i = 0;i<things.length;i++){
             for(int j = 0;j<things[i].length;j++){
                 mImageView = new ImageView(image);
@@ -51,6 +53,6 @@ public class MapThings extends Parent{
                 }
             }
         }
-
+//        createMonster();
     }
 }

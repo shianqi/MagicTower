@@ -24,7 +24,7 @@ public class Hero extends Parent{
     private int xp;         //当前经验
     private int lv;         //当前等级
     private int xpMax;      //最大经验
-    private ModelRectangle model;
+    public ModelRectangle model;
     private int modelXShifting = 5;
     private MapThings mapThings;
     public ArrayList<ModelRectangle> thingsList;
@@ -33,8 +33,8 @@ public class Hero extends Parent{
     private boolean canAttack = true;
 
     private ImageView mImageView;
-    private Hero.Direction direction = Hero.Direction.Left;
-    private Hero.Direction lastDirection;
+    private Hero.Direction direction = Direction.Left;
+    private Hero.Direction lastDirection = Direction.Down;
     private int width, height;
     private int index = 0;
     private int indexDiv = 5;
@@ -66,7 +66,7 @@ public class Hero extends Parent{
                 timer.cancel();
             }
         };
-        timer.scheduleAtFixedRate(timerTask, 800, 800);
+        timer.scheduleAtFixedRate(timerTask, 100, 800);
     }
 
     public void addSkill(SkillList skillList){
@@ -79,8 +79,9 @@ public class Hero extends Parent{
                 }
             };
             timer = new Timer();
-            timer.scheduleAtFixedRate(timerTask, 800, 800);
-            skillList.addSkill(model.getX(),model.getY());
+            timer.scheduleAtFixedRate(timerTask, 100, 800);
+            skillList.addSkill(model.getX(),model.getY(),lastDirection.toString());
+
             canAttack = false;
         }
     }
@@ -234,6 +235,10 @@ public class Hero extends Parent{
             }
         }
         return false;
+    }
+
+    public void stop(){
+        timer.cancel();
     }
 
     public void die() {

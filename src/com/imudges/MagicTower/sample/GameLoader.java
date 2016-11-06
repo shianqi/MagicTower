@@ -68,6 +68,7 @@ public class GameLoader extends Parent {
 
     public void stop(){
         timer.cancel();
+        heroClient.stop();
         skillList.stop();
     }
 
